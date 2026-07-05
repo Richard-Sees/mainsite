@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Richard Sees dashboard — AI workflow, game development progress, and tools.">
+    <meta property="og:title" content="Dashboard | Richard Sees">
+    <meta property="og:description" content="AI workflow, game development progress, and tools.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dashboard | Richard Sees">
+    <title>Dashboard | Richard Sees</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dropdowns.css">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .widget {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-primary);
+        }
+        .widget h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .widget-content {
+            font-size: 0.95rem;
+        }
+        .widget-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .widget-content li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .widget-content li:last-child {
+            border-bottom: none;
+        }
+        .stat-highlight {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        .private-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .private-link:hover {
+            background: var(--accent-secondary);
+            color: var(--bg-primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><img src="Richard_Sees_emblem.png" alt="" class="nav-emblem"> Richard Sees</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li class="nav-item">
+                    <a>Related Sites</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://petalscroll-studios.github.io/petalscroll-studios/index.html">PetalScroll Studios</a></li>
+                        <li><a href="https://petalscroll-studios.github.io/twlt/index.html">TWLT (Today We Learn Together)</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Public Dashboard</h1>
+                <p>AI workflow, development progress, and tools at a glance</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="dashboard-grid">
+                    <div class="widget" style="border-left-color: #9b59b6;">
+                        <h3>AI Models</h3>
+                        <div class="widget-content">
+                            <ul>
+                                <li>LM Studio (Local)</li>
+                                <li>MiMo Auto</li>
+                                <li>Custom Fine-tunes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="widget" style="border-left-color: #3498db;">
+                        <h3>Tools & Apps</h3>
+                        <div class="widget-content">
+                            <ul>
+                                <li>MiMoCode</li>
+                                <li>Roblox Studio</li>
+                                <li>VS Codium</li>
+                                <li>Custom Scripts</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="widget" style="border-left-color: #27ae60;">
+                        <h3>Game Progress</h3>
+                        <div class="widget-content">
+                            <div class="stat-highlight">15%</div>
+                            <p>Call of the Druid - Pre-Alpha stage</p>
+                            <p style="font-size: 0.85rem; opacity: 0.7;">Target: Winter 2026</p>
+                        </div>
+                    </div>
+
+                    <div class="widget" style="border-left-color: #e74c3c;">
+                        <h3>Quick Stats</h3>
+                        <div class="widget-content">
+                            <ul>
+                                <li>Development Hours: 500+</li>
+                                <li>Features Completed: 45</li>
+                                <li>Bugs Fixed: 120+</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="dashboard-private.html" class="private-link">Access Private Dashboard</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background-color: var(--bg-secondary);">
+            <div class="container">
+                <h2 class="section-title">Development Activity</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>Recent Commits</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.9rem;">
+                                <span style="color: var(--accent-primary);">feat:</span> Add creature AI system
+                                <br><small style="opacity: 0.6;">2 hours ago</small>
+                            </li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.9rem;">
+                                <span style="color: var(--accent-primary);">fix:</span> Resolve pathfinding issue
+                                <br><small style="opacity: 0.6;">5 hours ago</small>
+                            </li>
+                            <li style="padding: 0.5rem 0; font-size: 0.9rem;">
+                                <span style="color: var(--accent-primary);">feat:</span> Implement new UI menu
+                                <br><small style="opacity: 0.6;">1 day ago</small>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Upcoming Milestones</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
+                                <span style="color: #27ae60;">&#10003;</span> Alpha Build Complete
+                                <br><small style="opacity: 0.6;">Completed</small>
+                            </li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
+                                <span style="color: var(--accent-primary);">&#9675;</span> Beta Testing Phase
+                                <br><small style="opacity: 0.6;">Q1 2027</small>
+                            </li>
+                            <li style="padding: 0.5rem 0;">
+                                <span style="color: var(--accent-primary);">&#9675;</span> Public Release
+                                <br><small style="opacity: 0.6;">Q2 2027</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Quick Links</h2>
+                <div class="grid-3">
+                    <div class="card" style="text-align: center;">
+                        <h3>Roblox</h3>
+                        <p>Play Call of the Druid</p>
+                        <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Launch Game</a>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <h3>YouTube</h3>
+                        <p>Watch dev logs and tutorials</p>
+                        <a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 1rem;">Visit Channel</a>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <h3>AI Lab</h3>
+                        <p>Benchmarks and model tests</p>
+                        <a href="https://petalscroll-studios.github.io/twlt/ai-lab.html" class="btn btn-primary" style="margin-top: 1rem;">View Lab</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="Richard_Sees_emblem.png" alt="Richard Sees emblem" class="footer-emblem">
+                    <div class="footer-info">
+                        <h3 class="footer-title">Richard Sees</h3>
+                        <p class="footer-description">Developer • Game Creator • Local AI Enthusiast</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#">GitHub</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Richard Sees. Built with GitHub Pages</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

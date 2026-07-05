@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Private dashboard - Personal workspace for Richard Sees">
+    <meta property="og:title" content="Private Dashboard | Richard Sees">
+    <meta property="og:description" content="Personal workspace for Richard Sees">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Private Dashboard | Richard Sees">
+    <title>Private Dashboard | Richard Sees</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dropdowns.css">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+        .login-form {
+            background: #0d0d1a;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #2a2a3e;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+        }
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #e8ecf4;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #8892a4;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #3a3a50;
+            border-radius: 4px;
+            background: #141428;
+            color: #c0c8d8;
+            font-size: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #5a9cf8;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #5a9cf8;
+            color: #0d0d1a;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            transition: background 0.2s ease;
+        }
+        .login-btn:hover {
+            background: #7bb3ff;
+        }
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+        .dashboard-container {
+            display: none;
+        }
+        .dashboard-container.active {
+            display: flex;
+            height: calc(100vh - 60px);
+            overflow: hidden;
+        }
+        .login-container.hidden {
+            display: none;
+        }
+        .logout-btn {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            z-index: 100;
+        }
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+        .kanban-item {
+            background: #141428;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #5a9cf8;
+            cursor: grab;
+            color: #c0c8d8;
+            font-size: 0.85rem;
+        }
+        .kanban-item:active {
+            cursor: grabbing;
+        }
+        .add-task-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        .add-task-form input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #3a3a50;
+            border-radius: 4px;
+            background: #141428;
+            color: #c0c8d8;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+        .add-task-form button {
+            padding: 0.5rem 1rem;
+            background: #5a9cf8;
+            color: #0d0d1a;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+        .kanban-items {
+            min-height: 80px;
+        }
+        .session-info {
+            padding: 1rem;
+            color: #6a7488;
+            font-size: 0.75rem;
+        }
+        .session-info p {
+            margin: 0.3rem 0;
+        }
+        .session-info strong {
+            color: #8892a4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><img src="Richard_Sees_emblem.png" alt="" class="nav-emblem"> Richard Sees</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li class="nav-item">
+                    <a>Related Sites</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://petalscroll-studios.github.io/petalscroll-studios/index.html">PetalScroll Studios</a></li>
+                        <li><a href="https://petalscroll-studios.github.io/twlt/index.html">TWLT (Today We Learn Together)</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="login-container" id="loginContainer">
+            <div class="login-form">
+                <h2>Private Dashboard</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="login-btn">Access Dashboard</button>
+                    <p class="error-message" id="errorMessage">Incorrect password. Please try again.</p>
+                </form>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem;">
+                    <a href="dashboard.html" style="color: #5a9cf8;">Back to Public Dashboard</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="dashboard-container" id="dashboardContainer">
+            <aside class="dashboard-sidebar" id="sidebar">
+                <div class="sidebar-header">control panel</div>
+                <nav class="sidebar-nav" id="sidebarNav"></nav>
+                <div class="sidebar-footer">
+                    <button class="sidebar-add-btn" onclick="openSidebarEditor()">
+                        <span class="icon">+</span>
+                        <span>add link</span>
+                    </button>
+                </div>
+            </aside>
+
+            <div class="dashboard-main">
+                <div class="dashboard-panel calendar-panel active" id="panel-calendar">
+                    <h2 style="margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #e8ecf4;">Calendar</h2>
+                    <iframe src="https://calendar.google.com/calendar/embed?src=9dac58db2657c8dc47d9505449ace40efdc0ba3af85618a53c05c13a39534343%40group.calendar.google.com&ctz=America%2FNew_York" frameborder="0" scrolling="no" style="border: 0; width: 100%; flex: 1; min-height: 500px;"></iframe>
+                </div>
+
+                <div class="dashboard-panel kanban-panel" id="panel-kanban">
+                    <h2 style="margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #e8ecf4;">Kanban Board</h2>
+                    <div class="kanban-board">
+                        <div class="kanban-column">
+                            <h4 style="color: #3498db; margin-bottom: 1rem; font-size: 0.85rem;">To Do</h4>
+                            <div id="todoColumn" class="kanban-items"></div>
+                            <div class="add-task-form">
+                                <input type="text" id="newTodoInput" placeholder="Add task...">
+                                <button onclick="addKanbanTask('todo')">+</button>
+                            </div>
+                        </div>
+                        <div class="kanban-column">
+                            <h4 style="color: #f39c12; margin-bottom: 1rem; font-size: 0.85rem;">In Progress</h4>
+                            <div id="inProgressColumn" class="kanban-items"></div>
+                        </div>
+                        <div class="kanban-column">
+                            <h4 style="color: #27ae60; margin-bottom: 1rem; font-size: 0.85rem;">Done</h4>
+                            <div id="doneColumn" class="kanban-items"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-panel links-panel" id="panel-links">
+                    <h2 style="margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #e8ecf4;">Quick Links</h2>
+                    <div id="quickLinksContainer" class="links-grid"></div>
+                </div>
+
+                <div class="dashboard-panel external-panel" id="panel-gemini">
+                    <div class="external-icon-large">🤖</div>
+                    <h2>Gemini</h2>
+                    <p>Open Google Gemini in a new tab</p>
+                    <a href="https://gemini.google.com" target="_blank" rel="noopener" class="btn btn-primary" style="background: #5a9cf8; color: #0d0d1a;">Open Gemini</a>
+                </div>
+
+                <div class="dashboard-panel external-panel" id="panel-chatgpt">
+                    <div class="external-icon-large">💬</div>
+                    <h2>ChatGPT</h2>
+                    <p>Open OpenAI ChatGPT in a new tab</p>
+                    <a href="https://chat.openai.com" target="_blank" rel="noopener" class="btn btn-primary" style="background: #5a9cf8; color: #0d0d1a;">Open ChatGPT</a>
+                </div>
+
+                <div class="dashboard-panel external-panel" id="panel-deepseek">
+                    <div class="external-icon-large">🔍</div>
+                    <h2>Deepseek</h2>
+                    <p>Open Deepseek Chat in a new tab</p>
+                    <a href="https://chat.deepseek.com" target="_blank" rel="noopener" class="btn btn-primary" style="background: #5a9cf8; color: #0d0d1a;">Open Deepseek</a>
+                </div>
+
+                <div class="dashboard-panel" id="panel-session">
+                    <h2 style="margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #e8ecf4;">Session Info</h2>
+                    <div class="session-info">
+                        <p><strong>Status:</strong> <span style="color: #27ae60;">Active</span></p>
+                        <p><strong>Session expires:</strong> <span id="sessionExpiry">--</span></p>
+                        <p><strong>Last login:</strong> <span id="lastLogin">--</span></p>
+                        <p style="margin-top: 1rem; font-size: 0.7rem; color: #4a5268;">Session auto-expires after 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="logout-btn" onclick="DashboardAuth.logout()">Logout</button>
+        </div>
+    </main>
+
+    <div class="sidebar-editor-overlay" id="sidebarEditorModal">
+        <div class="sidebar-editor">
+            <h3>edit sidebar links</h3>
+            <div id="sidebarEditorList"></div>
+            <div class="sidebar-editor-btns">
+                <button class="add-btn" onclick="addSidebarLink()">+ Add</button>
+                <button class="reset-btn" onclick="resetSidebarLinks()">Reset</button>
+                <button class="save-btn" onclick="saveSidebarLinks()">Save</button>
+                <button class="cancel-btn" onclick="closeSidebarEditor()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="Richard_Sees_emblem.png" alt="Richard Sees emblem" class="footer-emblem">
+                    <div class="footer-info">
+                        <h3 class="footer-title">Richard Sees</h3>
+                        <p class="footer-description">Developer • Game Creator • Local AI Enthusiast</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#">GitHub</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Richard Sees. Built with GitHub Pages</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        const DEFAULT_SIDEBAR = [
+            { id: 'calendar', label: 'Calendar', icon: '📅', type: 'panel' },
+            { id: 'kanban', label: 'Kanban', icon: '📋', type: 'panel' },
+            { id: 'links', label: 'Quick Links', icon: '🔗', type: 'panel' },
+            { id: 'divider1', type: 'divider' },
+            { id: 'gemini', label: 'Gemini', icon: '🤖', type: 'panel' },
+            { id: 'chatgpt', label: 'ChatGPT', icon: '💬', type: 'panel' },
+            { id: 'deepseek', label: 'Deepseek', icon: '🔍', type: 'panel' },
+            { id: 'divider2', type: 'divider' },
+            { id: 'session', label: 'Session', icon: 'ℹ️', type: 'panel' }
+        ];
+
+        let sidebarItems = [];
+        let editedSidebarItems = [];
+        let activePanel = 'calendar';
+
+        function getSidebarItems() {
+            return JSON.parse(localStorage.getItem('sidebarItems')) || [...DEFAULT_SIDEBAR];
+        }
+
+        function renderSidebar() {
+            sidebarItems = getSidebarItems();
+            const nav = document.getElementById('sidebarNav');
+            nav.innerHTML = sidebarItems.map(item => {
+                if (item.type === 'divider') {
+                    return '<div class="sidebar-divider"></div>';
+                }
+                const isActive = activePanel === item.id;
+                const isExternal = item.url && !item.type;
+                return `
+                    <div class="sidebar-item ${isActive ? 'active' : ''}"
+                         onclick="${item.url ? `window.open('${item.url}', '_blank')` : `switchPanel('${item.id}')`}"
+                         title="${item.label}">
+                        <span class="icon">${item.icon}</span>
+                        <span class="label">${item.label}</span>
+                        ${isExternal ? '<span class="external-icon">↗</span>' : ''}
+                        <button class="remove-btn" onclick="event.stopPropagation(); removeSidebarItem('${item.id}')" title="Remove">×</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function switchPanel(panelId) {
+            activePanel = panelId;
+            document.querySelectorAll('.dashboard-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById(`panel-${panelId}`).classList.add('active');
+            renderSidebar();
+        }
+
+        function removeSidebarItem(id) {
+            sidebarItems = sidebarItems.filter(i => i.id !== id);
+            localStorage.setItem('sidebarItems', JSON.stringify(sidebarItems));
+            if (activePanel === id) {
+                const firstPanel = sidebarItems.find(i => i.type === 'panel');
+                if (firstPanel) switchPanel(firstPanel.id);
+            }
+            renderSidebar();
+        }
+
+        function openSidebarEditor() {
+            editedSidebarItems = getSidebarItems().map(i => ({...i}));
+            renderSidebarEditorList();
+            document.getElementById('sidebarEditorModal').classList.add('visible');
+        }
+
+        function closeSidebarEditor() {
+            document.getElementById('sidebarEditorModal').classList.remove('visible');
+        }
+
+        function renderSidebarEditorList() {
+            const list = document.getElementById('sidebarEditorList');
+            list.innerHTML = editedSidebarItems.map((item, i) => {
+                if (item.type === 'divider') {
+                    return `<div style="border-top: 1px solid #3a3a50; margin: 0.5rem 0;"></div>`;
+                }
+                return `
+                    <div class="sidebar-editor-row">
+                        <input type="text" class="icon-input" value="${item.icon}" onchange="editedSidebarItems[${i}].icon = this.value">
+                        <input type="text" value="${item.label}" onchange="editedSidebarItems[${i}].label = this.value" placeholder="Label" style="flex:1;">
+                        <input type="url" value="${item.url || ''}" onchange="editedSidebarItems[${i}].url = this.value || undefined; editedSidebarItems[${i}].type = this.value ? undefined : 'panel';" placeholder="URL (optional)" style="flex:2;">
+                        <button class="remove-link-btn" onclick="editedSidebarItems.splice(${i}, 1); renderSidebarEditorList();">×</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function addSidebarLink() {
+            editedSidebarItems.push({ id: 'custom-' + Date.now(), label: '', icon: '🔗', url: '', type: undefined });
+            renderSidebarEditorList();
+        }
+
+        function saveSidebarLinks() {
+            const valid = editedSidebarItems.filter(i => i.type === 'divider' || (i.label && (i.type === 'panel' || i.url)));
+            localStorage.setItem('sidebarItems', JSON.stringify(valid));
+            renderSidebar();
+            closeSidebarEditor();
+        }
+
+        function resetSidebarLinks() {
+            editedSidebarItems = [...DEFAULT_SIDEBAR];
+            renderSidebarEditorList();
+        }
+
+        let kanbanTasks = JSON.parse(localStorage.getItem('kanbanTasks')) || {
+            todo: [
+                { id: 1, text: 'Implement creature AI' },
+                { id: 2, text: 'Create new UI menu' }
+            ],
+            inProgress: [
+                { id: 3, text: 'Fix pathfinding bug' }
+            ],
+            done: [
+                { id: 4, text: 'Optimize performance' }
+            ]
+        };
+
+        function renderKanban() {
+            ['todo', 'inProgress', 'done'].forEach(status => {
+                const colId = status === 'inProgress' ? 'inProgressColumn' : status + 'Column';
+                const column = document.getElementById(colId);
+                if (!column) return;
+                column.innerHTML = kanbanTasks[status].map(task => `
+                    <div class="kanban-item" draggable="true" ondragstart="drag(event)" id="task-${task.id}">
+                        <span>${task.text}</span>
+                        <div style="display: flex; gap: 0.25rem; margin-top: 0.5rem;">
+                            ${status !== 'todo' ? `<button onclick="moveTask(${task.id}, '${status}', 'prev')" style="font-size: 0.7rem; padding: 0.2rem 0.4rem; background: #2a2a3e; color: #8892a4; border: none; border-radius: 3px; cursor: pointer;">←</button>` : ''}
+                            ${status !== 'done' ? `<button onclick="moveTask(${task.id}, '${status}', 'next')" style="font-size: 0.7rem; padding: 0.2rem 0.4rem; background: #2a2a3e; color: #8892a4; border: none; border-radius: 3px; cursor: pointer;">→</button>` : ''}
+                            <button onclick="deleteTask(${task.id}, '${status}')" style="font-size: 0.7rem; padding: 0.2rem 0.4rem; background: #e74c3c; color: white; border: none; border-radius: 3px; cursor: pointer;">×</button>
+                        </div>
+                    </div>
+                `).join('');
+            });
+            localStorage.setItem('kanbanTasks', JSON.stringify(kanbanTasks));
+        }
+
+        function addKanbanTask(status) {
+            const input = document.getElementById('newTodoInput');
+            if (input && input.value.trim()) {
+                kanbanTasks[status].push({ id: Date.now(), text: input.value.trim() });
+                input.value = '';
+                renderKanban();
+            }
+        }
+
+        function moveTask(id, currentStatus, direction) {
+            const order = ['todo', 'inProgress', 'done'];
+            const idx = order.indexOf(currentStatus);
+            const newIdx = direction === 'next' ? idx + 1 : idx - 1;
+            if (newIdx >= 0 && newIdx < order.length) {
+                const taskIdx = kanbanTasks[currentStatus].findIndex(t => t.id === id);
+                const task = kanbanTasks[currentStatus].splice(taskIdx, 1)[0];
+                kanbanTasks[order[newIdx]].push(task);
+                renderKanban();
+            }
+        }
+
+        function deleteTask(id, status) {
+            kanbanTasks[status] = kanbanTasks[status].filter(t => t.id !== id);
+            renderKanban();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        const DEFAULT_LINKS = [
+            { name: 'LM Studio', url: 'https://lmstudio.ai', icon: '🖥️' },
+            { name: 'Roblox Studio', url: 'https://create.roblox.com', icon: '🎮' },
+            { name: 'GitHub', url: 'https://github.com', icon: '💻' },
+            { name: 'VS Codium', url: 'https://vscodium.com', icon: '📝' },
+            { name: 'YouTube', url: 'https://www.youtube.com/@TWLT-LocalAIEdition', icon: '📺' }
+        ];
+
+        function getLinks() {
+            return JSON.parse(localStorage.getItem('quickLinks')) || [...DEFAULT_LINKS];
+        }
+
+        function renderQuickLinks() {
+            const links = getLinks();
+            const container = document.getElementById('quickLinksContainer');
+            if (!container) return;
+            container.innerHTML = links.map(link => `
+                <a href="${link.url}" class="link-card" target="_blank" rel="noopener">
+                    <span style="font-size: 1.5rem;">${link.icon}</span>
+                    <span>${link.name}</span>
+                </a>
+            `).join('');
+        }
+
+        function updateSessionInfo() {
+            const session = JSON.parse(localStorage.getItem('dashboard_session'));
+            if (session) {
+                const expiry = new Date(session.timestamp + 24 * 60 * 60 * 1000);
+                const expEl = document.getElementById('sessionExpiry');
+                const lastEl = document.getElementById('lastLogin');
+                if (expEl) expEl.textContent = expiry.toLocaleString();
+                if (lastEl) lastEl.textContent = new Date(session.timestamp).toLocaleString();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginContainer = document.getElementById('loginContainer');
+            const dashboardContainer = document.getElementById('dashboardContainer');
+            const loginForm = document.getElementById('loginForm');
+            const errorMessage = document.getElementById('errorMessage');
+
+            function showDashboard() {
+                loginContainer.classList.add('hidden');
+                dashboardContainer.classList.add('active');
+                renderSidebar();
+                renderKanban();
+                renderQuickLinks();
+                updateSessionInfo();
+            }
+
+            if (DashboardAuth.isAuthenticated()) {
+                showDashboard();
+            }
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const password = document.getElementById('password').value;
+                if (DashboardAuth.login(password)) {
+                    showDashboard();
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
