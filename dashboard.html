@@ -7,6 +7,7 @@
     <meta property="og:title" content="Dashboard | Richard Sees">
     <meta property="og:description" content="AI workflow, game development progress, and tools.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://richard-sees.github.io/mainsite/Richard_Sees_emblem.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Dashboard | Richard Sees">
     <title>Dashboard | Richard Sees</title>
@@ -53,19 +54,6 @@
             font-size: 2rem;
             font-weight: 700;
             color: var(--accent-primary);
-        }
-        .private-link {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-            border-radius: 4px;
-            text-decoration: none;
-        }
-        .private-link:hover {
-            background: var(--accent-secondary);
-            color: var(--bg-primary);
         }
     </style>
 </head>
@@ -149,9 +137,6 @@
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="dashboard-private.html" class="private-link">Access Private Dashboard</a>
-                </div>
             </div>
         </section>
 
@@ -204,7 +189,7 @@
                     <div class="card" style="text-align: center;">
                         <h3>Roblox</h3>
                         <p>Play Call of the Druid</p>
-                        <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Launch Game</a>
+                        <span class="btn btn-secondary" aria-disabled="true" style="margin-top: 1rem; opacity: 0.75; cursor: default;">Launch Coming Soon</span>
                     </div>
                     <div class="card" style="text-align: center;">
                         <h3>YouTube</h3>
@@ -232,7 +217,9 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <a href="#">GitHub</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="about.html">About</a>
+                    <a href="https://github.com/richard-sees">GitHub</a>
                     <a href="contact.html">Contact</a>
                 </div>
             </div>

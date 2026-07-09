@@ -17,8 +17,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-emblem {
-    width: 36px;
-    height: 36px;
+    /* 46px (was 36px) so the emblem is recognizable at a glance;
+       the photo is circular artwork, so the circle crop suits it. */
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     object-fit: cover;
 }
