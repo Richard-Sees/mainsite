@@ -1,236 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Richard Sees dashboard — AI workflow, game development progress, and tools.">
-    <meta property="og:title" content="Dashboard | Richard Sees">
-    <meta property="og:description" content="AI workflow, game development progress, and tools.">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Richard Sees public project dashboard.">
+    <!-- SOCIAL-METADATA:START -->
+    <link rel="canonical" href="https://richard-sees.github.io/mainsite/dashboard.html">
+    <meta property="og:title" content="Dashboard — Richard Sees">
+    <meta property="og:description" content="Richard Sees public project dashboard.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://richard-sees.github.io/mainsite/Richard_Sees_emblem.png">
+    <meta property="og:url" content="https://richard-sees.github.io/mainsite/dashboard.html">
+    <meta property="og:image" content="https://richard-sees.github.io/mainsite/assets/share-card.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Richard Sees — developer, game creator, and local AI enthusiast">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dashboard | Richard Sees">
-    <title>Dashboard | Richard Sees</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/dropdowns.css">
-    <link rel="stylesheet" href="css/site.css">
-    <style>
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .widget {
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            padding: 1.5rem;
-            border-left: 4px solid var(--accent-primary);
-        }
-        .widget h3 {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .widget-content {
-            font-size: 0.95rem;
-        }
-        .widget-content ul {
-            list-style: none;
-            padding: 0;
-        }
-        .widget-content li {
-            padding: 0.4rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .widget-content li:last-child {
-            border-bottom: none;
-        }
-        .stat-highlight {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo"><img src="Richard_Sees_emblem.png" alt="" class="nav-emblem"> Richard Sees</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
+    <meta name="twitter:title" content="Dashboard — Richard Sees">
+    <meta name="twitter:description" content="Richard Sees public project dashboard.">
+    <meta name="twitter:image" content="https://richard-sees.github.io/mainsite/assets/share-card.webp">
+    <meta name="twitter:image:alt" content="Richard Sees — developer, game creator, and local AI enthusiast">
+    <!-- SOCIAL-METADATA:END --><title>Dashboard — Richard Sees</title><link rel="icon" href="favicon.ico"><link rel="stylesheet" href="css/site.css"></head>
+<body data-page="dashboard" data-root="."><a class="skip-link" href="#main">Skip to content</a><!-- STATIC-SHELL:HEADER:START -->
+    <header class="site-header">
+        <nav class="shell nav" aria-label="Primary navigation">
+            <a class="brand" href="./index.html" aria-label="Richard Sees home"><span class="brand-mark" aria-hidden="true">R/S</span><span>Richard Sees</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="dashboard.html" class="active">Dashboard</a></li>
-                <li class="nav-item">
-                    <a>Related Sites</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://petalscroll-studios.github.io/mainsite/index.html">PetalScroll Studios</a></li>
-                        <li><a href="https://twlt-today-we-learn-together.github.io/mainsite/index.html">TWLT (Today We Learn Together)</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <ul class="nav-links" id="site-nav"><li><a href="./index.html">Home</a></li><li><a href="./portfolio.html">Work</a></li><li><a href="./about.html">About</a></li><li><a href="./dashboard.html" aria-current="page">Dashboard</a></li><li><a href="./contact.html">Contact</a></li></ul>
         </nav>
     </header>
-
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Public Dashboard</h1>
-                <p>AI workflow, development progress, and tools at a glance</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="dashboard-grid">
-                    <div class="widget" style="border-left-color: #9b59b6;">
-                        <h3>AI Models</h3>
-                        <div class="widget-content">
-                            <ul>
-                                <li>LM Studio (Local)</li>
-                                <li>MiMo Auto</li>
-                                <li>Custom Fine-tunes</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="widget" style="border-left-color: #3498db;">
-                        <h3>Tools & Apps</h3>
-                        <div class="widget-content">
-                            <ul>
-                                <li>MiMoCode</li>
-                                <li>Roblox Studio</li>
-                                <li>VS Codium</li>
-                                <li>Custom Scripts</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="widget" style="border-left-color: #27ae60;">
-                        <h3>Game Progress</h3>
-                        <div class="widget-content">
-                            <div class="stat-highlight">15%</div>
-                            <p>Call of the Druid - Pre-Alpha stage</p>
-                            <p style="font-size: 0.85rem; opacity: 0.7;">Target: Winter 2026</p>
-                        </div>
-                    </div>
-
-                    <div class="widget" style="border-left-color: #e74c3c;">
-                        <h3>Quick Stats</h3>
-                        <div class="widget-content">
-                            <ul>
-                                <li>Development Hours: 500+</li>
-                                <li>Features Completed: 45</li>
-                                <li>Bugs Fixed: 120+</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="section" style="background-color: var(--bg-secondary);">
-            <div class="container">
-                <h2 class="section-title">Development Activity</h2>
-                <div class="grid-2">
-                    <div class="card">
-                        <h3>Recent Commits</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.9rem;">
-                                <span style="color: var(--accent-primary);">feat:</span> Add creature AI system
-                                <br><small style="opacity: 0.6;">2 hours ago</small>
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.9rem;">
-                                <span style="color: var(--accent-primary);">fix:</span> Resolve pathfinding issue
-                                <br><small style="opacity: 0.6;">5 hours ago</small>
-                            </li>
-                            <li style="padding: 0.5rem 0; font-size: 0.9rem;">
-                                <span style="color: var(--accent-primary);">feat:</span> Implement new UI menu
-                                <br><small style="opacity: 0.6;">1 day ago</small>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>Upcoming Milestones</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
-                                <span style="color: #27ae60;">&#10003;</span> Alpha Build Complete
-                                <br><small style="opacity: 0.6;">Completed</small>
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
-                                <span style="color: var(--accent-primary);">&#9675;</span> Beta Testing Phase
-                                <br><small style="opacity: 0.6;">Q1 2027</small>
-                            </li>
-                            <li style="padding: 0.5rem 0;">
-                                <span style="color: var(--accent-primary);">&#9675;</span> Public Release
-                                <br><small style="opacity: 0.6;">Q2 2027</small>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">Quick Links</h2>
-                <div class="grid-3">
-                    <div class="card" style="text-align: center;">
-                        <h3>Roblox</h3>
-                        <p>Play Call of the Druid</p>
-                        <span class="btn btn-secondary" aria-disabled="true" style="margin-top: 1rem; opacity: 0.75; cursor: default;">Launch Coming Soon</span>
-                    </div>
-                    <div class="card" style="text-align: center;">
-                        <h3>YouTube</h3>
-                        <p>Watch dev logs and tutorials</p>
-                        <a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 1rem;">Visit Channel</a>
-                    </div>
-                    <div class="card" style="text-align: center;">
-                        <h3>AI Lab</h3>
-                        <p>Benchmarks and model tests</p>
-                        <a href="https://twlt-today-we-learn-together.github.io/mainsite/ai-lab.html" class="btn btn-primary" style="margin-top: 1rem;">View Lab</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
+    <!-- STATIC-SHELL:HEADER:END --><main id="main">
+    <section class="page-hero"><div class="shell reveal"><p class="eyebrow">Public workspace · Current focus</p><h1 class="display">Work in<br><em>motion.</em></h1><p class="lede">A deliberately general view of what I’m learning and building, without pretending a draft estimate is a live metric.</p></div></section>
+    <section class="section"><div class="shell dashboard">
+        <article class="panel wide reveal" style="--panel-accent:linear-gradient(90deg,var(--accent),var(--acid))"><p class="panel-label">Game development</p><p class="big-stat">Pre-alpha</p><p>Call of the Druid is in active development. Public updates will stay descriptive until a milestone is ready to be dated.</p></article>
+        <article class="panel reveal" style="--panel-accent:linear-gradient(90deg,var(--violet),var(--cyan))"><p class="panel-label">Current practice</p><p class="big-stat">Learn<br>by doing</p><p>Small experiments, careful notes, and repeated iteration.</p></article>
+        <article class="panel reveal" style="--panel-accent:var(--cyan)"><p class="panel-label">Local AI focus</p><ul class="clean-list"><li><span>Consumer hardware</span><small>Real limits</small></li><li><span>Model comparisons</span><small>Practical</small></li><li><span>Local-first tools</span><small>Private</small></li></ul></article>
+        <article class="panel reveal" style="--panel-accent:var(--accent)"><p class="panel-label">Creative tools</p><ul class="clean-list"><li><span>Roblox Studio</span></li><li><span>AI coding assistants</span></li><li><span>Open-source editors</span></li><li><span>Custom scripts</span></li></ul></article>
+        <article class="panel reveal" style="--panel-accent:var(--acid)"><p class="panel-label">Game focus</p><ul class="clean-list"><li><span>Creature trust</span></li><li><span>Celtic Winter</span></li><li><span>Light-fantasy atmosphere</span></li></ul></article>
+        <article class="panel wide reveal" style="--panel-accent:linear-gradient(90deg,var(--acid),var(--cyan))"><p class="panel-label">What comes next</p><ul class="clean-list"><li><span>Build and test core systems</span><small>Now</small></li><li><span>Share stable progress</span><small>When ready</small></li><li><span>Invite broader feedback</span><small>Later</small></li></ul></article>
+        <article class="panel full reveal"><p class="panel-label">Keep exploring</p><h2>See the projects behind the snapshot.</h2><div class="button-row"><a class="button" href="https://www.youtube.com/@TWLT-LocalAIEdition">Watch on YouTube ↗</a><a class="button secondary" href="https://twlt-today-we-learn-together.github.io/mainsite/ai-lab.html">Open the AI Lab ↗</a></div></article>
+    </div></section>
+</main><!-- STATIC-SHELL:FOOTER:START -->
     <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="Richard_Sees_emblem.png" alt="Richard Sees emblem" class="footer-emblem">
-                    <div class="footer-info">
-                        <h3 class="footer-title">Richard Sees</h3>
-                        <p class="footer-description">Developer • Game Creator • Local AI Enthusiast</p>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <a href="portfolio.html">Portfolio</a>
-                    <a href="about.html">About</a>
-                    <a href="https://github.com/richard-sees">GitHub</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Richard Sees. Built with GitHub Pages</p>
-            </div>
+        <div class="shell footer-grid">
+            <div><div class="footer-brand">Richard Sees</div><p class="footer-copy">Developer · Game creator · Local AI enthusiast · © 2026</p></div>
+            <div class="footer-links"><a href="https://github.com/richard-sees" target="_blank" rel="noopener">GitHub</a><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">YouTube</a><a href="https://x.com/richiesees" target="_blank" rel="noopener">X</a><a href="https://www.twitch.tv/richiesees" target="_blank" rel="noopener">Twitch</a></div>
         </div>
     </footer>
-
-    <script src="js/theme.js"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/dashboard.js"></script>
-</body>
-</html>
+    <!-- STATIC-SHELL:FOOTER:END --><script src="js/site.js"></script></body></html>

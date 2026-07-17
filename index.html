@@ -1,124 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Richard Sees — Developer, Game Creator, and Local AI Enthusiast. Explore portfolio, projects, and AI workflows.">
-    <meta property="og:title" content="Richard Sees | Home">
-    <meta property="og:description" content="Developer, Game Creator, and Local AI Enthusiast.">
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Richard Sees — developer, game creator, and local AI enthusiast building practical, imaginative things.">
+    <!-- SOCIAL-METADATA:START -->
+    <link rel="canonical" href="https://richard-sees.github.io/mainsite/">
+    <meta property="og:title" content="Richard Sees — Developer, Game Creator & Local AI Enthusiast">
+    <meta property="og:description" content="Richard Sees — developer, game creator, and local AI enthusiast building practical, imaginative things.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://richard-sees.github.io/mainsite/Richard_Sees_emblem.png">
+    <meta property="og:url" content="https://richard-sees.github.io/mainsite/">
+    <meta property="og:image" content="https://richard-sees.github.io/mainsite/assets/share-card.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Richard Sees — developer, game creator, and local AI enthusiast">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Richard Sees | Home">
-    <meta name="twitter:description" content="Developer, Game Creator, and Local AI Enthusiast.">
-    <title>Richard Sees | Home</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/dropdowns.css">
-    <link rel="stylesheet" href="css/site.css">
+    <meta name="twitter:title" content="Richard Sees — Developer, Game Creator & Local AI Enthusiast">
+    <meta name="twitter:description" content="Richard Sees — developer, game creator, and local AI enthusiast building practical, imaginative things.">
+    <meta name="twitter:image" content="https://richard-sees.github.io/mainsite/assets/share-card.webp">
+    <meta name="twitter:image:alt" content="Richard Sees — developer, game creator, and local AI enthusiast">
+    <!-- SOCIAL-METADATA:END -->
+    <title>Richard Sees — Developer, Game Creator & Local AI Enthusiast</title>
+    <link rel="icon" href="favicon.ico"><link rel="stylesheet" href="css/site.css">
 </head>
-<body>
-    <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo"><img src="Richard_Sees_emblem.png" alt="" class="nav-emblem"> Richard Sees</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+<body data-page="home" data-root=".">
+    <a class="skip-link" href="#main">Skip to content</a><!-- STATIC-SHELL:HEADER:START -->
+    <header class="site-header">
+        <nav class="shell nav" aria-label="Primary navigation">
+            <a class="brand" href="./index.html" aria-label="Richard Sees home"><span class="brand-mark" aria-hidden="true">R/S</span><span>Richard Sees</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+                <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li class="nav-item">
-                    <a>Related Sites</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://petalscroll-studios.github.io/mainsite/index.html">PetalScroll Studios</a></li>
-                        <li><a href="https://twlt-today-we-learn-together.github.io/mainsite/index.html">TWLT (Today We Learn Together)</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <ul class="nav-links" id="site-nav"><li><a href="./index.html" aria-current="page">Home</a></li><li><a href="./portfolio.html">Work</a></li><li><a href="./about.html">About</a></li><li><a href="./dashboard.html">Dashboard</a></li><li><a href="./contact.html">Contact</a></li></ul>
         </nav>
     </header>
-
-    <main>
-        <section class="hero-featured">
-            <div class="container">
-                <h1>Richard Sees</h1>
-                <p class="hero-subtitle">Developer • Game Creator • Local AI Enthusiast</p>
-                <div class="hero-actions">
-                    <a href="portfolio.html" class="btn btn-primary">View Portfolio</a>
-                    <a href="about.html" class="btn btn-secondary">About Me</a>
+    <!-- STATIC-SHELL:HEADER:END -->
+    <main id="main">
+        <section class="hero">
+            <div class="shell hero-grid">
+                <div class="hero-copy reveal">
+                    <p class="eyebrow">Developer · Game creator · Local AI explorer</p>
+                    <h1 class="display">I learn by <em>building.</em></h1>
+                    <p class="lede">I’m exploring game development and local AI through practical projects, honest experiments, and notes shared along the way.</p>
+                    <div class="hero-actions"><a class="button" href="portfolio.html">Explore the work <span aria-hidden="true">↗</span></a><a class="button secondary" href="about.html">Meet Richard</a></div>
+                </div>
+                <div class="hero-portrait reveal">
+                    <span class="portrait-dot" aria-hidden="true"></span>
+                    <div class="portrait-frame"><img src="assets/portrait-640.webp" srcset="assets/portrait-640.webp 640w, assets/portrait-960.webp 960w" sizes="(max-width: 900px) 92vw, 540px" alt="Richard outdoors with his son" width="640" height="640" fetchpriority="high" decoding="async"></div>
+                    <span class="portrait-stamp">Curious by default</span>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <div class="container">
-                <h2 class="section-title">What I Do</h2>
-                <div class="grid-3">
-                    <div class="card">
-                        <h3>Game Development</h3>
-                        <p>Building Call of the Druid — a druidic, Celtic-inspired open world game for Roblox.</p>
-                        <a href="https://petalscroll-studios.github.io/mainsite/index.html" class="btn btn-secondary">PetalScroll Studios</a>
-                    </div>
-                    <div class="card">
-                        <h3>Local AI</h3>
-                        <p>Exploring local AI models, benchmarks, and workflows. Teaching others through TWLT.</p>
-                        <a href="https://twlt-today-we-learn-together.github.io/mainsite/index.html" class="btn btn-secondary">Visit TWLT</a>
-                    </div>
-                    <div class="card">
-                        <h3>Dashboard</h3>
-                        <p>My personal workspace — kanban boards, quick links, and AI tools at a glance.</p>
-                        <a href="dashboard.html" class="btn btn-secondary">Open Dashboard</a>
-                    </div>
+            <div class="shell">
+                <div class="section-intro reveal"><h2 class="section-title">Three threads.<br>One maker.</h2><p>Games, local AI, and an open notebook of the work in progress. Each project has its own identity, but they all start with curiosity.</p></div>
+                <div class="project-grid">
+                    <a class="project-card reveal" href="https://petalscroll-studios.github.io/mainsite/index.html"><span class="project-number">01 / GAME WORLD</span><span class="project-arrow" aria-hidden="true">↗</span><div><h3>PetalScroll Studios</h3><p>Nature-first games inspired by folklore, discovery, and quiet wonder.</p></div></a>
+                    <a class="project-card reveal" href="https://twlt-today-we-learn-together.github.io/mainsite/index.html"><span class="project-number">02 / LOCAL AI LAB</span><span class="project-arrow" aria-hidden="true">↗</span><div><h3>TWLT</h3><p>Benchmarks, tutorials, tools, and lessons from consumer hardware.</p></div></a>
+                    <a class="project-card reveal" href="dashboard.html"><span class="project-number">03 / NOW BUILDING</span><span class="project-arrow" aria-hidden="true">→</span><div><h3>Open dashboard</h3><p>A public snapshot of tools, progress, milestones, and the current creative stack.</p></div></a>
                 </div>
             </div>
         </section>
 
-        <section class="section" style="background-color: var(--bg-secondary);">
-            <div class="container">
-                <h2 class="section-title">Connect With Me</h2>
-                <div class="social-links">
-                    <a href="https://github.com/richard-sees" aria-label="GitHub" title="GitHub">GH</a>
-                    <a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">YT</a>
-                    <a href="https://x.com/richiesees" target="_blank" rel="noopener" aria-label="X" title="X">X</a>
-                    <a href="https://www.twitch.tv/richiesees" target="_blank" rel="noopener" aria-label="Twitch" title="Twitch">TW</a>
-                </div>
+        <section class="section">
+            <div class="shell quote-block reveal">
+                <p class="quote-note"><strong>Working belief</strong><br>Interesting technology matters most when ordinary people can actually run it, understand it, and make something of their own with it.</p>
+                <blockquote>Build with <em>real constraints.</em><br>Share what actually happens.</blockquote>
             </div>
         </section>
     </main>
-
+    <!-- STATIC-SHELL:FOOTER:START -->
     <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="Richard_Sees_emblem.png" alt="Richard Sees emblem" class="footer-emblem">
-                    <div class="footer-info">
-                        <h3 class="footer-title">Richard Sees</h3>
-                        <p class="footer-description">Developer • Game Creator • Local AI Enthusiast</p>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <a href="portfolio.html">Portfolio</a>
-                    <a href="about.html">About</a>
-                    <a href="https://github.com/richard-sees">GitHub</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Richard Sees. Built with GitHub Pages</p>
-            </div>
+        <div class="shell footer-grid">
+            <div><div class="footer-brand">Richard Sees</div><p class="footer-copy">Developer · Game creator · Local AI enthusiast · © 2026</p></div>
+            <div class="footer-links"><a href="https://github.com/richard-sees" target="_blank" rel="noopener">GitHub</a><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">YouTube</a><a href="https://x.com/richiesees" target="_blank" rel="noopener">X</a><a href="https://www.twitch.tv/richiesees" target="_blank" rel="noopener">Twitch</a></div>
         </div>
     </footer>
-
-    <script src="js/theme.js"></script>
-    <script src="js/nav.js"></script>
+    <!-- STATIC-SHELL:FOOTER:END --><script src="js/site.js"></script>
 </body>
 </html>
